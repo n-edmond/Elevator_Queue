@@ -5,13 +5,14 @@
 #include <queue>
 using namespace std;
 
-Person::Person( int counter ){
+Person::Person( int counter, int currentFloor ){
 	id = counter;
 	arriveTime = getTime();
 	departTime;
-	userFloor = rand() % 3 + 1;
-	destination = get_rand_floor_generator(userFloor);
+	userFloor = currentFloor;
+	destination = get_rand_floor_generator(currentFloor);
 }
+
 int Person::get_rand_floor_generator(int floorCurrOn)
 {
 	//floor_vector.erase(floorCurrOn);
@@ -40,6 +41,10 @@ void Person::set_rand_floor_generator(int userF)
 
 int Person::getFloor() {
 	return userFloor;
+}
+
+int Person::getDestination() {
+	return destination;
 }
 
 void Person::setDepartTime() {
