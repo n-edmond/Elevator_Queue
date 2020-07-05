@@ -1,19 +1,19 @@
 #include <iostream>
 #include <time.h>
 #include "Person_Class.h"
-#include <vector>
 #include <queue>
 using namespace std;
 
 Person::Person( int counter, int currentFloor ){
 	id = counter;
-	arriveTime = getTime();
+	arriveTime = clock();
 	departTime;
-	userFloor = currentFloor;
-	destination = get_rand_floor_generator(currentFloor);
+//	userFloor = currentFloor;
+	destination = Destination_Generator(currentFloor);
 }
 
-int Person::get_rand_floor_generator(int floorCurrOn)
+//FUNCTIONS
+int Person::Destination_Generator(int floorCurrOn)
 {
 	//floor_vector.erase(floorCurrOn);
 	int userFloor = rand() % 3 + 1;
@@ -32,6 +32,13 @@ int Person::get_rand_floor_generator(int floorCurrOn)
 	int number = table[index];
 	*/
 }
+
+void Person::Delay(int number_of_seconds)
+{
+	int milli_seconds = 1000 * number_of_seconds;//Converts the requested num of seconds to milli_seconds
+	clock_t start_time = clock();
+	while (clock() < start_time + milli_seconds);//loops until time is correct/
+}
 /*
 void Person::set_rand_floor_generator(int userF)
 {
@@ -39,28 +46,33 @@ void Person::set_rand_floor_generator(int userF)
 }
 */
 
-int Person::getFloor() {
-	return userFloor;
+
+//GETTERS
+int Person::Get_ID() {
+	return id;
 }
 
-int Person::getDestination() {
+//int Person::Get_Rider_Floor() {
+//	return userFloor;
+//}
+
+int Person::Get_Destination() {
 	return destination;
 }
 
-void Person::setDepartTime() {
-	departTime = getTime();
+clock_t Person::Get_Arrival_Time() {
+	return arriveTime;
 }
 
-clock_t Person::getTime() {
-	return clock();
+clock_t Person::Get_Depart_Time() {
+	return departTime;
 }
 
-void Person::delay(int number_of_seconds)
-{
-	int milli_seconds = 1000 * number_of_seconds;//Converts the requested num of seconds to milli_seconds
-	clock_t start_time = clock();
-	while (clock() < start_time + milli_seconds);//loops until time is correct/
+void Person::Set_Depart_Time() {
+	departTime = clock();
 }
+
+
 
 /*
 void Person::get_in_elevator(int currFloor, int secDelay)
