@@ -140,11 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Elevator_Class_Def.cpp" />
+    <ClCompile Include="Floor_Class_Def.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Person_Class_Def.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Elevator_Class.h" />
+    <ClInclude Include="Floor_Class.h" />
     <ClInclude Include="Person_Class.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
