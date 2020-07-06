@@ -22,11 +22,6 @@ Person::Person(int counter, int currentFloor)
 
 int Person::Destination_Generator(int floor_curr_on)
 {//RANDOMLY GENERATIONS USER'S DESIRED FLOOR. 
-	if (count == 0)
-	{
-		floor_curr_on = Floor_Start_Randomizer();
-		count++;
-	}
 	int user_floor = rand() % 3 + 1;
 
 	while (user_floor == floor_curr_on)//THIS WHILE LOOP WILL CHANGE THE RANDOMIZED FLOOR IF THIS NUMBER IS THE SAME AS THE FLOOR THEYRE CURRENTLY ON
@@ -62,11 +57,14 @@ void Person::Depart_Display()
 		<< endl;
 }
 
-int Person::Floor_Start_Randomizer()
-{//IDENTIFIES WHICH FLOOR PRESSED ELEVATOR BUTTON FIRST
+bool Person::operator <(const Person& rider)
+{
+	return destination < rider.destination;
+}
 
-	int first_button_push = rand() % 3 + 1;
-	return first_button_push;
+bool Person::operator >(const Person& rider)
+{
+	return destination > rider.destination;
 }
 
 //GETTERS

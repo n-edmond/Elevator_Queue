@@ -34,13 +34,17 @@ int main()
 
 void single_elevator_sys()
 {
-	int current_floor = 1;
 	Floor test;
 	Elevator elevator;
+	
+	int current_floor = test.Floor_Start_Randomizer();
+	cout << "First rider is being picked up at Floor #" << current_floor << endl;
 
+	elevator = test.Enter_Elevator(2, elevator, current_floor);
+	test.Floor_Check(current_floor, elevator);
 	for (int i = 0; i < 3; i++) {
-		elevator = test.Exit_Elevator(current_floor, elevator);
-		elevator = test.Enter_Elevator(current_floor, 2, elevator);
 		current_floor = elevator.Get_Elevator_Location();
+		elevator = test.Exit_Elevator(elevator, current_floor);
+		elevator = test.Enter_Elevator(2, elevator, current_floor);
 	}
 }

@@ -18,8 +18,9 @@ public:
 	int Destination_Generator(int floor_curr_on);//RANDOMIZES THE FLOOR BASED ON THE FLOOR THE USER IS CURRENTLY ON
 	void Delay(int number_of_seconds);//SIMULATES A DELAY FOR THE ELEVATOR.
 	void Depart_Display();//DISPLAYS INFORMATION REGARDING THE USER'S ID AND HOW LONG THEY WERE ON THE ELEVATOR
-	int Floor_Start_Randomizer();//DECIDES WHICH FLOOR HAS PRESSED THE BUTTON FOR THE ELEVATOR FIRST.
-
+	bool operator <(const Person &rider);
+	bool operator >(const Person& rider);
+	
 	//GETTERS
 	int Get_ID();//GET UNIQUE ID
 	int Get_Destination();//GETTER FOR RAND FLOOR GENERATOR
@@ -35,7 +36,6 @@ private:
 	clock_t arrive_time;//TIME USER IS CREATED
 	clock_t depart_time;//TIME USER GETS OFF THE ELEVATOR
 	int destination;//DESIRED FLOOR
-	int count = 0;
 
 	//VECTOR OF POSSIBLE FLOOR CHOICES NOT SURE IF I WILL USE THIS YET. SMALL ENOUGH POPULATION THAT I PREPOPULATED IT
 	vector<int> floor1_options{ 2, 3 };

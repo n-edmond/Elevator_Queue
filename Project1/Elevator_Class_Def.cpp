@@ -56,24 +56,44 @@ void Elevator::Remove_Floor(int curr_floor)
 	}
 }
 */
-
+/*
 void Elevator::Reverse_Elevator_Direction() 
 {//SWAPS DIRECTION OF ELEVATOR. USED FOR SINGLE ELEVATOR SYS.
 
 	going_up = !going_up;
 }
-
+*/
 void Elevator::Update_Elevator_Location()
 {//MOVES THE ELEVATOR UP OR DOWN
 
 	if (going_up)
 	{
-		current_elevator_floor++;
+		for (int i = 0; i < elevator_cart.size(); i++)
+		{
+			if (elevator_cart.at(i).Get_Destination() > current_elevator_floor)
+			{
+				current_elevator_floor = elevator_cart.at(i).Get_Destination();
+				break;
+			}
+		}
 	}
 	else
 	{
-		current_elevator_floor--;
+		for (int i = elevator_cart.size() - 1; i >= 0; i--)
+		{
+			if (elevator_cart.at(i).Get_Destination() < current_elevator_floor)
+			{
+				current_elevator_floor = elevator_cart.at(i).Get_Destination();
+				break;
+			}
+		}
 	}
+}
+
+deque <Person> Elevator::Sort_Riders(deque <Person> riders)
+{
+	std::sort(riders.begin(), riders.end());
+	return riders;
 }
 
 //GETTERS
@@ -111,4 +131,9 @@ void Elevator::Set_Is_Door_Open(bool check)
 void Elevator::Set_Elevator_Cart(deque<Person> temp_cart)
 {
 	this->elevator_cart = temp_cart;
+}
+
+void Elevator::Set_Elevator_Direction(bool direction)
+{
+	going_up = direction;
 }
