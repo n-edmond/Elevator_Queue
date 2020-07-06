@@ -17,16 +17,14 @@ int Floor::Generate_ID()
 
 void Floor::Floor_Check(int curr_floor, Elevator& elevator_cart)
 {//DETERMINES THE DIRECTION OF A FLOOR BASED ON BEGINING OR END OF ELEVATOR DEQUE
-
+	
 	if (elevator_cart.Get_Floor_Stops().front() == elevator_cart.Get_Elevator_Location())
 	{//SINCE FIRST FLOOR IN DEQUE WILL BE SMALLEST, WILL HELP DETERMINE IF I NEED TO GO UP/DOWN
 		elevator_cart.Set_Elevator_Direction(true);
-		cout << "DIRECTION " << elevator_cart.Get_Elevator_Direction() << " FLOOR " << elevator_cart.Get_Elevator_Location() << endl;
 	}
 	else if (elevator_cart.Get_Floor_Stops().back() == elevator_cart.Get_Elevator_Location())
 	{
 		elevator_cart.Set_Elevator_Direction(false);
-		cout << "DIRECTION " << elevator_cart.Get_Elevator_Direction() << " FLOOR " << elevator_cart.Get_Elevator_Location() << endl;
 	}
 }
  
@@ -81,7 +79,7 @@ void Floor::Add_New_Person(int curr_floor, Elevator elevator_cart, deque <Person
 		{
 			cart_persons.push_back(rider);
 			//elevator_cart.Add_Floor(rider.Get_Destination());
-			cout << "A person has entered the elevator. They are going to floor: " << floorChosen << endl;
+			cout << "Rider #" << rider.Get_ID() << " has entered the elevator. They are going to floor: " << floorChosen << endl;
 		}
 		else//if the elevator has more than capacity, form a queue outside door. Queue cannot be more than 20 people. 
 		{
@@ -102,36 +100,14 @@ Elevator Floor::Exit_Elevator(Elevator elevator_cart, int curr_floor)
 
 	cout << "The elevator doors have opened.\n";
 
-	if (elevator_cart.Get_Elevator_Direction())
-	{
-		current_rider = cart_persons.front();
-	}
-	else
-	{
-		current_rider = cart_persons.back();
-	}
+	current_rider = cart_persons.front();
 
-	while (current_rider.Get_Destination() == curr_floor)
+	while (current_rider.Get_Destination() == curr_floor && !cart_persons.empty())
 	{//LOOPS THROUGH DEQUE OF RIDERS AND REMOVES USERS W/ MATCHING DESTINATIONS
 		current_rider.Set_Depart_Time();
 		current_rider.Depart_Display();
-		if(elevator_cart.Get_Elevator_Direction())
-		{
-			cart_persons.pop_front();
-		}
-		else
-		{
-			cart_persons.pop_back();
-		}
-
-		if (elevator_cart.Get_Elevator_Direction())
-		{
-			current_rider = cart_persons.front();
-		}
-		else
-		{
-			current_rider = cart_persons.back();
-		}
+		cart_persons.pop_front();
+		current_rider = cart_persons.front();
 	}
 
 	elevator_cart.Set_Elevator_Cart(cart_persons);
@@ -158,12 +134,21 @@ Elevator Floor::Enter_Elevator(int sec_delay, Elevator elevator_cart, int curr_f
 		Add_New_Person(curr_floor, elevator_cart, cart_persons, time_elevator_available);
 	}
 
-	cart_persons = elevator_cart.Sort_Riders(cart_persons);
+	if (curr_floor == 2 && cart_persons.front().Get_ID() == 1)
+	{
+		int first_destination = cart_persons.front().Get_Destination();
+		elevator_cart.Set_Elevator_Location(first_destination);
 
-	elevator_cart.Set_Elevator_Cart(cart_persons);
-	Floor_Check(curr_floor, elevator_cart);
-	elevator_cart.Update_Elevator_Location();
-	
+		cart_persons = elevator_cart.Sort_Riders(cart_persons);
+		elevator_cart.Set_Elevator_Cart(cart_persons);
+	}
+	else
+	{
+		cart_persons = elevator_cart.Sort_Riders(cart_persons);
+		elevator_cart.Set_Elevator_Cart(cart_persons);
+		Floor_Check(curr_floor, elevator_cart);
+		elevator_cart.Update_Elevator_Location();
+	}	
 
 	//elevator_cart.Remove_Floor(curr_floor);
 	cout << "\nThe door is now closing. Heading to Floor #" << elevator_cart.Get_Elevator_Location() << endl << endl;

@@ -14,7 +14,7 @@ public:
 	//FUNCTIONS
 	//void Add_Floor(int new_destination);//ADDS FLOOR TO THE FLOOR LIST DEQUE IF NOT ALREADY PRESENT
 	//void Remove_Floor(int curr_floor);//REMOVES CURRENT FLOOR FROM THE FLOOR LIST DEQUE
-	//void Reverse_Elevator_Direction();//INVERTS THE ELEVATOR'S DIRECTION. USED FOR SINGLE ELEVATOR SYS
+	void Reverse_Elevator_Direction();//INVERTS THE ELEVATOR'S DIRECTION. USED FOR SINGLE ELEVATOR SYS
 	void Update_Elevator_Location();//MOVES ELEVATOR UP OR DOWN
 	deque <Person> Sort_Riders(deque <Person> riders);
 
@@ -29,6 +29,7 @@ public:
 	void Set_Is_Door_Open(bool check);//SETS THE DOOR TO CLOSED WHEN CALLED. 
 	void Set_Elevator_Cart(deque<Person> temp_cart);//SETS DEQUE OF CURRENT RIDERS ON THE ELEVATOR
 	void Set_Elevator_Direction(bool direction);
+	void Set_Elevator_Location(int loc);
 
 private:
 	deque<Person> elevator_cart;//DEQUE OF PEOPLE CURRENTLY RIDING ON THE ELEVATOR
