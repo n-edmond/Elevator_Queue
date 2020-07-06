@@ -1,12 +1,2 @@
-﻿  Elevator_Class_Def.cpp
-C:\Users\mepoy\OneDrive\Desktop\CS303\Elevator_Queue\Project1\Elevator_Class_Def.cpp(25,20): warning C4018: '<': signed/unsigned mismatch
-  Floor_Class_Def.cpp
-C:\Users\mepoy\OneDrive\Desktop\CS303\Elevator_Queue\Project1\Floor_Class_Def.cpp(12,6): error C2065: 'maxFloor': undeclared identifier
-C:\Users\mepoy\OneDrive\Desktop\CS303\Elevator_Queue\Project1\Floor_Class_Def.cpp(12,31): error C2065: 'minFloor': undeclared identifier
-C:\Users\mepoy\OneDrive\Desktop\CS303\Elevator_Queue\Project1\Floor_Class_Def.cpp(43,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\mepoy\OneDrive\Desktop\CS303\Elevator_Queue\Project1\Floor_Class_Def.cpp(95,4): error C3861: 'Set_Floor_Limits': identifier not found
-C:\Users\mepoy\OneDrive\Desktop\CS303\Elevator_Queue\Project1\Floor_Class_Def.cpp(111,38): error C2660: 'Elevator::set_elevator_location': function does not take 0 arguments
-C:\Users\mepoy\OneDrive\Desktop\CS303\Elevator_Queue\Project1\Elevator_Class.h(28,7): message : see declaration of 'Elevator::set_elevator_location'
-  Main.cpp
-C:\Users\mepoy\OneDrive\Desktop\CS303\Elevator_Queue\Project1\Main.cpp(16,20): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+﻿  Person_Class_Def.cpp
+  Project1.vcxproj -> C:\Users\mepoy\OneDrive\Desktop\CS303\Elevator_Queue\Project1\Debug\Project1.exe
