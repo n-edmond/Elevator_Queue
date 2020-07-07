@@ -12,14 +12,16 @@ Person::Person()
 	destination = 1;
 }
 
-Person::Person(int counter, int currentFloor) 
+Person::Person(int counter, int currentFloor, clock_t start) 
 {//CONSTRUCTOR
 	id = counter;
-	arrive_time = clock();
+	arrive_time = start;
 	depart_time;
 	destination = Destination_Generator(currentFloor);
 }
 
+
+//FUNCTIONS
 int Person::Destination_Generator(int floor_curr_on)
 {//RANDOMLY GENERATIONS USER'S DESIRED FLOOR. 
 	int user_floor = rand() % 3 + 1;
@@ -58,12 +60,12 @@ void Person::Depart_Display()
 }
 
 bool Person::operator <(const Person& rider)
-{
+{//OVERLOADING FOR CLASS COMPARISON
 	return destination < rider.destination;
 }
 
 bool Person::operator >(const Person& rider)
-{
+{//OVERLOADING FOR CLASS COMPARISON
 	return destination > rider.destination;
 }
 

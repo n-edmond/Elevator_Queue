@@ -3,6 +3,7 @@
 
 #include <queue>
 #include <time.h>
+#include <chrono>
 #include <vector>
 
 using namespace std;
@@ -12,7 +13,7 @@ public:
 
 	//CONSTRUCTORS
 	Person();
-	Person(int counter, int current_floor);
+	Person(int counter, int current_floor, clock_t start);
 
 	//FUNCTIONS
 	int Destination_Generator(int floor_curr_on);//RANDOMIZES THE FLOOR BASED ON THE FLOOR THE USER IS CURRENTLY ON

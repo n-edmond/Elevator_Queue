@@ -11,52 +11,6 @@ Elevator::Elevator()
 	current_elevator_floor = 1;
 }
 
-/*
-//WHEN A USER REQUESTS A DESTINATION FLOOR, IT IS ADDED TO THE ELEVATOR'S DEQUE OF STOPS, AS LONG AS THE FLOOR
-//ISN'T ALREADY PRESENT. THE DEQUE IS SORTED IN ORDER OF SMALLEST TO LARGEST.
-//IF THE DEQUE IS EMPTY, THEN THE ELEVATOR HAS NO STOPS PENDING AND THE LOCATION IS ADDED AUTOMATICALLY.
-//IF ONE FLOOR IS PRESENT AND IT IS NOT EQUAL TO THE REQUESTED FLOOR, THEN IS IS INSERTED INTO THE DEQUE BASED ON ITS SIZE
-//BECAUSE THERE ARE ONLY THREE FLOORS, AND THE ELEVATOR'S CURRENT FLOOR DOES NOT NEED TO BE CONSIDERED, THEN THERE WILL ONLY
-//EVER BE 2 FLOORS IN THE DEQUE AT THE MOST. THEREFORE, THE CHECKS DESCRIBED ABOVE ARE ALL THAT ARE NEEDED
-void Elevator::Add_Floor(int new_destination)
-{
-	if (floor_stops.size() == 0)
-	{
-		floor_stops.push_back(new_destination);
-		current_elevator_floor = new_destination;
-		return;
-	}
-	else if (floor_stops.size() == 1 && floor_stops.front() != new_destination)
-	{
-		if (new_destination > floor_stops.front())
-		{
-			floor_stops.push_back(new_destination);
-		}
-		else
-		{
-			floor_stops.push_front(new_destination);
-		}
-		current_elevator_floor = new_destination;
-	}
-}
-
-//REMOVES THE FLOOR THE ELEVATOR IS CURRENTLY ON FROM THE DEQUE. IF THE ELEVATOR IS GOING UP, THEN THE CURRENT FLOOR
-//WOULD BE ON THE FRONT OF THE DEQUE. IF IT'S GOING DOWN, THEN IT WOULD BE ON THE BACK.
-void Elevator::Remove_Floor(int curr_floor)
-{
-	if (going_up and curr_floor == floor_stops.front())
-	{
-		floor_stops.pop_front();
-		current_elevator_floor = floor_stops.front();
-	}
-	else if(!going_up and curr_floor == floor_stops.back())
-	{
-		floor_stops.pop_back();
-		current_elevator_floor = floor_stops.back();
-	}
-}
-*/
-
 void Elevator::Reverse_Elevator_Direction() 
 {//SWAPS DIRECTION OF ELEVATOR. USED FOR SINGLE ELEVATOR SYS.
 
@@ -64,50 +18,31 @@ void Elevator::Reverse_Elevator_Direction()
 }
 
 void Elevator::Update_Elevator_Location()
-{//MOVES THE ELEVATOR UP OR DOWN
-
-	//if (going_up)
-	//{
-		for (int i = 0; i < elevator_cart.size(); i++)
-		{
-			if ((going_up && elevator_cart.at(i).Get_Destination() > current_elevator_floor))
-			{
-				current_elevator_floor = elevator_cart.at(i).Get_Destination();
-				break;
-			}
-			else if (!going_up && elevator_cart.at(i).Get_Destination() < current_elevator_floor)
-			{
-				current_elevator_floor = elevator_cart.at(i).Get_Destination();
-				break;
-			}
-		}
-	//}
-	/*
-	else
-	{
-		for (int i = elevator_cart.size() - 1; i >= 0; i--)
-		{
-			if (elevator_cart.at(i).Get_Destination() < current_elevator_floor)
-			{
-				current_elevator_floor = elevator_cart.at(i).Get_Destination();
-				break;
-			}
-		}
-	}
-	*/
-}
-
-deque <Person> Elevator::Sort_Riders(deque <Person> riders)
 {
-	if (going_up)
+	for(int i = 0; i < 5; i++)
 	{
-		std::sort(riders.begin(), riders.end());
+		if (current_elevator_floor == 3)//IF THE CURRENT FLOOR IS 3, THE ELEVATOR CAN ONLY GO DOWN
+		{
+			going_up = false;
+		}
+		else if (current_elevator_floor == 1) //IF THE CURRENT FLOOR IS 1, THE ELEVATOR CAN ONLY GO UP.
+		{
+			going_up = true;
+		}
+		if (going_up)
+		{
+			current_elevator_floor++;//MOVES ELEVATOR UP
+		}
+		else
+		{
+			current_elevator_floor--;//MOVES ELEVATOR DOWN
+		}
+
+		if (floor_stops[current_elevator_floor])
+		{
+			break;
+		}
 	}
-	else
-	{
-		std::sort(riders.begin(), riders.end(), greater<>());
-	}
-	return riders;
 }
 
 //GETTERS
@@ -131,9 +66,9 @@ bool Elevator::Get_Elevator_Direction()
 	return going_up;
 }
 
-deque<int> Elevator::Get_Floor_Stops()
+bool Elevator::Get_Floor_Stop(int user_selection)
 {
-	return floor_stops;
+	return floor_stops[user_selection];
 }
 
 //SETTERS
@@ -155,4 +90,13 @@ void Elevator::Set_Elevator_Direction(bool direction)
 void Elevator::Set_Elevator_Location(int loc)
 {
 	current_elevator_floor = loc;
+	floor_stops[loc] = true;
+}
+
+void Elevator::Set_Floor_Stop(int user_selection, bool status)
+{
+	if (status != floor_stops[user_selection])
+	{
+		floor_stops[user_selection] = status;
+	}
 }

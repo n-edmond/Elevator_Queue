@@ -4,77 +4,96 @@
 #include "Floor_Class.h"
 
 using namespace std;
-void Single_Elevator_Sys(int vol);//will show implementation of single elevator system. 
-void Multi_Elevator_Sys(int vol);//will show implementation of multiple (2) elevator system.
+void Single_Elevator_Sys(int vol);//WILL SHOW IMPLEMENTATION OF SINGLE SYSTEM
+void Multi_Elevator_Sys(int vol);//WILL SHOW IMPLEMENTATION OF 2 ELEVATOR SYSTEM
 
 int main()
 {
 	srand((unsigned)time(0));
+	
+	int volume = 2;//CHANGE THE DIGIT HERE IF YOU WOULD LIKE TO SEE DIFFERENT SPEEDS. OPTIONS ARE 2, 4, 6 AS STATED ON ASSUMPTIONS PAGE
 
-	/*TO MAKE SIMULATION SHORT, WHAT IF I STOP RUNNING THE PROGRAM AFTER 10 PEOPLE HAVE GOTTEN IN LINE PER FLOOR? MIGHT BE TOO LONG OTHERWISE AND WILL 
-	STILL SHOW GENERAL IDEA? THINK IT THROUGH FOR LATER/**/
-
-
-	/*cout << "Welcome to the Elevator Simulator!\n\n";
-	cout << "This program will simulate the order of user arrivals/departures.\n\n";
-	cout << "Please choose from the options below: \n";
-	cout << "1 - This will show you an elevator system in high volumes (2 second delay between arrivals)\n";
-	cout << "2 - This will show you an elevator system in medium volumes (4 second delay between arrivals)\n";
-	cout << "3 - This will show you an elevator system in low volumes (6 second delay between arrivals)\n";*/
-	int volume = 2;
 	Single_Elevator_Sys(volume);
+	cout << "\n\nIf you would like to see the multi-elevator system, please uncomment it in the Main.cpp. Thank you! \n \n";
 
 	//Multi_Elevator_Sys(volume);
-	//deque<Person> elevator_passengers = elevator.Get_Completed_Rides();
-//	for (int i = 0; i < elevator_passengers.size(); ++i) {
-//		cout << "Person #" << elevator_passengers.at(i).Get_ID() << "'s destination is Floor " << elevator_passengers.at(i).Get_Destination() << endl;
-//	}
+
 
 	return 0;
 }
 
+
 void Single_Elevator_Sys(int vol)
-{
-	Floor test;
+{//CREATES THE SINGLE ELEVATOR SYSTEM
+	cout << "**************************** SINGLE ELEVATOR SYSTEM ****************************" << endl;
+
+	Floor bldg;
 	Elevator elevator;
 	
-	int current_floor = 2;//test.Floor_Start_Randomizer();
+	int current_floor = bldg.Floor_Start_Randomizer();
 	cout << "First rider is being picked up at Floor #" << current_floor << endl;
 
-	elevator = test.Enter_Elevator(vol, elevator, current_floor);
-	test.Floor_Check(current_floor, elevator);
-	for (int i = 0; i < 5; i++) {
+	elevator = bldg.Enter_Elevator(vol, elevator, current_floor);
+
+	for (int i = 0; i < 7; i++) {//ITERATES A RANDOM NUMBER OF TIMES. THIS IS SIMPLY TO SHOW A SMALL WINDOW OF THE ELEVATOR PROCESS
 		current_floor = elevator.Get_Elevator_Location();
-		elevator = test.Exit_Elevator(elevator, current_floor);
-		elevator = test.Enter_Elevator(vol, elevator, current_floor);
+		elevator = bldg.Exit_Elevator(elevator, current_floor);
+		elevator = bldg.Enter_Elevator(vol, elevator, current_floor);
+	}
+	bldg.Set_Program_End_Check();
+	while(elevator.Get_Elevator_Cart().size() > 0)//WHILE LOOP WILL KEEP GOING UNTIL THE LINES OUTSIDE THE ELEVATORS EMPTY. WILL TERMINATE HERE
+	{
+		current_floor = elevator.Get_Elevator_Location();
+		elevator = bldg.Exit_Elevator(elevator, current_floor);
+		elevator = bldg.Enter_Elevator(vol, elevator, current_floor);
 	}
 }
 
 void Multi_Elevator_Sys(int vol)
 {
-	Floor test;
+	cout << "**************************** MULTI ELEVATOR SYSTEM ****************************" << endl;
+	Floor bldg;
 	Elevator elevator_1;
 	Elevator elevator_2;
 
-	int current_floor_1 = test.Floor_Start_Randomizer();
+	int current_floor_1 = bldg.Floor_Start_Randomizer();
 	cout << "First rider for elevator 1 is being picked up at Floor #" << current_floor_1 << endl;
 
-	elevator_1 = test.Enter_Elevator(vol, elevator_1, current_floor_1);
-	test.Floor_Check(current_floor_1, elevator_1);
+	elevator_1 = bldg.Enter_Elevator(vol, elevator_1, current_floor_1, true, 1);
 
-	int current_floor_2= test.Floor_Start_Randomizer();
-	cout << "First rider for elevator 1 is being picked up at Floor #" << current_floor_2 << endl;
+	int current_floor_2= bldg.Floor_Start_Randomizer();
+	cout << "First rider for elevator 2 is being picked up at Floor #" << current_floor_2 << endl;
 
-	elevator_2 = test.Enter_Elevator(vol, elevator_2, current_floor_2);
-	test.Floor_Check(current_floor_2, elevator_2);
+	elevator_2 = bldg.Enter_Elevator(vol, elevator_2, current_floor_2, true, 2);
 
-	for (int i = 0; i < 3; i++) {
-		current_floor_1 = elevator_1.Get_Elevator_Location();
-		elevator_1 = test.Exit_Elevator(elevator_1, current_floor_1);
-		elevator_1 = test.Enter_Elevator(vol, elevator_1, current_floor_1);
-
-		current_floor_2 = elevator_2.Get_Elevator_Location();
-		elevator_2 = test.Exit_Elevator(elevator_2, current_floor_2);
-		elevator_2 = test.Enter_Elevator(vol, elevator_2, current_floor_2);
+	for (int i = 0; i < 7; i++) {//ITERATES A RANDOM NUMBER OF TIMES. THIS IS SIMPLY TO SHOW A SMALL WINDOW OF THE ELEVATOR PROCESS
+		if (elevator_1.Get_Elevator_Cart().size() > 0)
+		{
+			current_floor_1 = elevator_1.Get_Elevator_Location();
+			elevator_1 = bldg.Exit_Elevator(elevator_1, current_floor_1, 1);
+			elevator_1 = bldg.Enter_Elevator(vol, elevator_1, current_floor_1, true, 1);
+		}
+		else if (elevator_2.Get_Elevator_Cart().size() > 0)
+		{
+			current_floor_2 = elevator_2.Get_Elevator_Location();
+			elevator_2 = bldg.Exit_Elevator(elevator_2, current_floor_2, 2);
+			elevator_2 = bldg.Enter_Elevator(vol, elevator_2, current_floor_2, true, 2);
+		}
+	}
+	bldg.Set_Program_End_Check();
+	while (elevator_1.Get_Elevator_Cart().size() > 0 || elevator_2.Get_Elevator_Cart().size() > 0)//WHILE LOOP WILL KEEP GOING UNTIL THE LINES OUTSIDE THE ELEVATORS EMPTY. WILL TERMINATE HERE
+	{
+		if (elevator_1.Get_Elevator_Cart().size() > 0)
+		{
+			current_floor_1 = elevator_1.Get_Elevator_Location();
+			elevator_1 = bldg.Exit_Elevator(elevator_1, current_floor_1, 1);
+			elevator_1 = bldg.Enter_Elevator(vol, elevator_1, current_floor_1, true, 1);
+		}
+		else if (elevator_2.Get_Elevator_Cart().size() > 0)
+		{
+			current_floor_2 = elevator_2.Get_Elevator_Location();
+			elevator_2 = bldg.Exit_Elevator(elevator_2, current_floor_2, 2);
+			elevator_2 = bldg.Enter_Elevator(vol, elevator_2, current_floor_2, true, 2);
+		}
 	}
 }
