@@ -41,13 +41,13 @@ int Person::Destination_Generator(int floor_curr_on)
 	*/
 }
 
-void Person::Delay(int number_of_seconds)
+/*void Person::Delay(int number_of_seconds)
 {//DELAYS EXECUTION OF PROGRAM BY N SECONDS
 
 	int milli_seconds = 1000 * number_of_seconds;//Converts the requested num of seconds to milli_seconds
 	clock_t start_time = clock();
 	while (clock() < start_time + milli_seconds);//loops until time is correct/
-}
+}*/
 
 void Person::Depart_Display()
 

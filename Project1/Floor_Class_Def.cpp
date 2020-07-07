@@ -46,7 +46,7 @@ queue<Person>* Floor::Queue_Switcher(int curr_floor, int elevator_number)
 }
 
 void Floor::Add_From_Queue(int curr_floor, deque <Person> &cart_persons, Elevator &elevator_cart, int elevator_number)
-{
+{//UNLOADS APPROPRIATE QUEUE FOR ELEVATOR ONTO ELEVATOR
 	queue<Person>* floor_queue = Queue_Switcher(curr_floor, elevator_number);//POINTS TO APPROPIRATE QUEUE FOR THIS FLOOR
 
 	while (floor_queue->size() > 0)

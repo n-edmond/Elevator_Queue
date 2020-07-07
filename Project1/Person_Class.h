@@ -17,7 +17,7 @@ public:
 
 	//FUNCTIONS
 	int Destination_Generator(int floor_curr_on);//RANDOMIZES THE FLOOR BASED ON THE FLOOR THE USER IS CURRENTLY ON
-	void Delay(int number_of_seconds);//SIMULATES A DELAY FOR THE ELEVATOR.
+	//void Delay(int number_of_seconds);//SIMULATES A DELAY FOR THE ELEVATOR.
 	void Depart_Display();//DISPLAYS INFORMATION REGARDING THE USER'S ID AND HOW LONG THEY WERE ON THE ELEVATOR
 	bool operator <(const Person &rider);
 	bool operator >(const Person& rider);
@@ -39,8 +39,8 @@ private:
 	int destination;//DESIRED FLOOR
 
 	//VECTOR OF POSSIBLE FLOOR CHOICES NOT SURE IF I WILL USE THIS YET. SMALL ENOUGH POPULATION THAT I PREPOPULATED IT
-	vector<int> floor1_options{ 2, 3 };
+	/*vector<int> floor1_options{ 2, 3 };
 	vector<int> floor2_options{ 2, 3 };
-	vector<int> floor3_options{ 1, 2 };
+	vector<int> floor3_options{ 1, 2 };*/
 };
 #endif
