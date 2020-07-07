@@ -1,7 +1,2 @@
-﻿  Elevator_Class_Def.cpp
-  Floor_Class_Def.cpp
-C:\Users\mepoy\OneDrive\Desktop\CS303\Elevator_Queue\Project1\Floor_Class_Def.cpp(100,16): warning C4018: '<': signed/unsigned mismatch
-  Main.cpp
-  Person_Class_Def.cpp
-  Generating Code...
+﻿  Person_Class_Def.cpp
   Project1.vcxproj -> C:\Users\mepoy\OneDrive\Desktop\CS303\Elevator_Queue\Project1\Debug\Project1.exe

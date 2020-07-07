@@ -13,7 +13,6 @@ public:
 	Elevator();
 
 	//FUNCTIONS
-	void Reverse_Elevator_Direction();//INVERTS THE ELEVATOR'S DIRECTION. USED FOR SINGLE ELEVATOR SYS
 	void Update_Elevator_Location();//MOVES ELEVATOR UP OR DOWN
 
 	//GETTERS

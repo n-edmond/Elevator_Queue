@@ -11,12 +11,6 @@ Elevator::Elevator()
 	current_elevator_floor = 1;
 }
 
-void Elevator::Reverse_Elevator_Direction() 
-{//SWAPS DIRECTION OF ELEVATOR. USED FOR SINGLE ELEVATOR SYS.
-
-	going_up = !going_up;
-}
-
 void Elevator::Update_Elevator_Location()
 {
 	for(int i = 0; i < 5; i++)

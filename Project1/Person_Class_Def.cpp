@@ -59,16 +59,6 @@ void Person::Depart_Display()
 		<< endl;
 }
 
-bool Person::operator <(const Person& rider)
-{//OVERLOADING FOR CLASS COMPARISON
-	return destination < rider.destination;
-}
-
-bool Person::operator >(const Person& rider)
-{//OVERLOADING FOR CLASS COMPARISON
-	return destination > rider.destination;
-}
-
 //GETTERS
 int Person::Get_ID() {
 	return id;
