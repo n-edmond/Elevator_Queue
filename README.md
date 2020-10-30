@@ -42,7 +42,7 @@ UML Class Diagrams Explained with Examples, June 13, 2019. Retrieved July, 2020 
 	https://creately.com/blog/diagrams/class-diagram-relationships/
 
 
-Program Usage and Development: https://github.com/n-edmond/Children-s-Arithmetic-Game/wiki/Program-Usage-and-Development
+Program Usage and Development: https://github.com/n-edmond/Elevator_Queue/wiki/Program-Usage-and-Developmenthttps://github.com/n-edmond/Children-s-Arithmetic-Game/wiki/Program-Usage-and-Development
 
 
 
