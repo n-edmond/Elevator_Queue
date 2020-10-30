@@ -1,6 +1,6 @@
 # Elevator_Queue
 
-*PROJECTS ASSUMPTIONS*
+*PROJECT ASSUMPTIONS*
 
 **ELEVATOR LOGIC**
 For the purposes of this simulation, a basic structure of how the elevator works is as follows:
