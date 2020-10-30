@@ -31,6 +31,10 @@ o	The elevator floors will stay open for a constant amount of time.
 o	To show the ‘waiting time’ of the users, we will use the clock function. Because the elevators in a multi-system may not run concurrently, the times will not be extremely accurate. They will however, still be able to indicate how long they have been on the elevator
 o	This program will use the an arrival/departure variable to keep track of time when the person is ‘created’ and when they have left
 
+*PROGRAM WIKI PAGE*
+
+
+Program Usage and Development: https://github.com/n-edmond/Elevator_Queue/wiki/Program-Usage-and-Developmenthttps://github.com/n-edmond/Children-s-Arithmetic-Game/wiki/Program-Usage-and-Development
 
 **REFERENCES**
 
@@ -47,7 +51,6 @@ UML Class Diagrams Explained with Examples, June 13, 2019. Retrieved July, 2020 
 
 
 
-Program Usage and Development: https://github.com/n-edmond/Elevator_Queue/wiki/Program-Usage-and-Developmenthttps://github.com/n-edmond/Children-s-Arithmetic-Game/wiki/Program-Usage-and-Development
 
 
 
