@@ -1,6 +1,6 @@
 # Elevator_Queue
 
-*ASSUMPTIONS PAGE*
+*PROJECTS ASSUMPTIONS*
 
 **ELEVATOR LOGIC**
 For the purposes of this simulation, a basic structure of how the elevator works is as follows:
@@ -42,8 +42,7 @@ UML Class Diagrams Explained with Examples, June 13, 2019. Retrieved July, 2020 
 	https://creately.com/blog/diagrams/class-diagram-relationships/
 
 
-GITHUB URL
-https://github.com/n-edmond/Elevator_Queue
+Program Usage and Development: https://github.com/n-edmond/Children-s-Arithmetic-Game/wiki/Program-Usage-and-Development
 
 
 
