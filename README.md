@@ -37,10 +37,14 @@ o	This program will use the an arrival/departure variable to keep track of time 
 A computer science portal for geeks. (n.d.). Retrieved July, 2020, from https://www.geeksforgeeks.org/
 Know thy complexities!(n.d.) Retrieved July, 2020 from
  https://www.bigocheatsheet.com/
+ 
 Stack Exchange(n.d) Retrieved July, 2020 from
 	https://stackexchange.com/
+	
 UML Class Diagrams Explained with Examples, June 13, 2019. Retrieved July, 2020 from
 	https://creately.com/blog/diagrams/class-diagram-relationships/
+
+
 
 
 Program Usage and Development: https://github.com/n-edmond/Elevator_Queue/wiki/Program-Usage-and-Developmenthttps://github.com/n-edmond/Children-s-Arithmetic-Game/wiki/Program-Usage-and-Development
