@@ -33,6 +33,7 @@ o	This program will use the an arrival/departure variable to keep track of time 
 
 
 **REFERENCES**
+
 A computer science portal for geeks. (n.d.). Retrieved July, 2020, from https://www.geeksforgeeks.org/
 Know thy complexities!(n.d.) Retrieved July, 2020 from
  https://www.bigocheatsheet.com/
